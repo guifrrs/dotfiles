@@ -1,0 +1,40 @@
+! XFT
+Xft.dpi: 96
+Xft.hinting: true
+
+! URXVT
+urxvt.scrollBar: false
+urxvt.saveLines: 5000
+urxvt.perl-ext-common: default, matcher, clipboard, font-size
+urxvt.url-select-launcher: chromium
+urxvt.font: xft:Hack:size=12
+urxvt.letterSpace: -1
+urxvt.perl-ext: tabbed
+urxvt.perl-lib: /home/guifrrs/.urxvt
+
+! URXVT Tabbed
+URxvt.tabbed.tabbar-fg: 8
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 15
+URxvt.tabbed.tab-bg: 8
+URxvt.tabbed.new-button: false
+
+! Dracula Xresources palette
+*.foreground: #FFF
+*.background: #282A36
+*.color0:     #000000
+*.color8:     #4D4D4D
+*.color1:     #FF5555
+*.color9:     #FF6E67
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+*.color4:     #BD93F9
+*.color12:    #CAA9FA
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+*.color7:     #BFBFBF
+*.color15:    #E6E6E6
