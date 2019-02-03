@@ -1,25 +1,24 @@
-! XFT
-Xft.dpi: 96
-Xft.hinting: true
-
-! URXVT
-urxvt.scrollBar: false
-urxvt.saveLines: 5000
-urxvt.perl-ext-common: default, matcher, clipboard, font-size
-urxvt.url-select-launcher: chromium
-urxvt.font: xft:Hack:size=12
-urxvt.letterSpace: -1
+! General config
+URXvt.tabbed.reopen-on-close: yes
+urxvt.perl-ext-common: default, matcher, clipboard
 urxvt.perl-ext: tabbed
 urxvt.perl-lib: /home/guifrrs/.urxvt
+URxvt.matcher.button: 1
+urxvt.scrollBar: false
+urxvt.font: xft:DejaVu Sans Mono:size=10, xft:Hack:size=10
+urxvt.letterSpace: -1
+urxvt.saveLines: 5000		
+urxvt.urlLauncher: /usr/bin/firefox-developer-edition
+URxvt.iso14755: False
 
-! URXVT Tabbed
+! Extension - Tabbed
 URxvt.tabbed.tabbar-fg: 8
 URxvt.tabbed.tabbar-bg: 0
-URxvt.tabbed.tab-fg: 15
-URxvt.tabbed.tab-bg: 8
-URxvt.tabbed.new-button: false
+URxvt.tabbed.tab-fg:    15
+URxvt.tabbed.tab-bg:    8
+URxvt.tabbed.new-button: true 
 
-! Dracula Xresources palette
+! Theme - Dracula
 *.foreground: #FFF
 *.background: #282A36
 *.color0:     #000000
