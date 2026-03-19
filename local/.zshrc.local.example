@@ -5,3 +5,4 @@
 # export GITHUB_TOKEN="..."
 # export FZF_DEFAULT_OPTS="--height=70% --layout=reverse --border"
 # export GLOGF_PREVIEW=0
+# export GHPR_PREVIEW=0

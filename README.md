@@ -74,3 +74,9 @@ Se o preview do `glogf` não renderizar bem no seu terminal, desative com:
 ```bash
 export GLOGF_PREVIEW=0
 ```
+
+Para `ghpr`, use:
+
+```bash
+export GHPR_PREVIEW=0
+```

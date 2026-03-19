@@ -53,8 +53,9 @@ glogf() {
 
   if [[ "${GLOGF_PREVIEW:-1}" == "1" ]]; then
     fzf_args+=(
-      --preview='[ -n "{1}" ] && git --no-pager show --color=always "{1}" 2>/dev/null'
+      --preview='hash=$(printf "%s" {} | cut -f1); [ -n "$hash" ] && git --no-pager show --color=always "$hash" 2>/dev/null'
       --preview-window='right:70%'
+      --bind='?:toggle-preview'
     )
   fi
 
@@ -83,17 +84,27 @@ ghpr() {
   fi
 
   local selected pr
+  local -a fzf_args
+  fzf_args=(
+    --delimiter=$'\t'
+    --with-nth=1,2,3,4
+    --height=80%
+    --layout=reverse
+    --prompt='pr> '
+  )
+
+  if [[ "${GHPR_PREVIEW:-1}" == "1" ]]; then
+    fzf_args+=(
+      --preview='pr=$(printf "%s" {} | cut -f1); [ -n "$pr" ] && gh pr view "$pr" --comments 2>/dev/null'
+      --preview-window='right:70%'
+      --bind='?:toggle-preview'
+    )
+  fi
+
   selected="$(
     gh pr list --limit 100 --json number,title,headRefName,updatedAt \
       --template '{{range .}}{{printf "%v\t%s\t%s\t%s\n" .number .title .headRefName .updatedAt}}{{end}}' \
-      | fzf \
-        --delimiter=$'\t' \
-        --with-nth=1,2,3,4 \
-        --height=80% \
-        --layout=reverse \
-        --prompt='pr> ' \
-        --preview='[ -n "{1}" ] && gh pr view "{1}" --comments 2>/dev/null' \
-        --preview-window='right:70%'
+      | fzf "${fzf_args[@]}"
   )" || return
 
   pr="${selected%%$'\t'*}"
