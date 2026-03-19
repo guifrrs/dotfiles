@@ -1,0 +1,13 @@
+[user]
+	email = gui.silva@tutanota.com
+	name = Guilherme Silva
+[init]
+	defaultBranch = main
+[credential "https://github.com"]
+	helper =
+	helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !gh auth git-credential
+[include]
+	path = ~/.gitconfig.local

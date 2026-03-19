@@ -1,0 +1,7 @@
+# Local machine overrides for zsh.
+# Copy to ~/.zshrc.local and customize as needed.
+
+# export EDITOR="nvim"
+# export GITHUB_TOKEN="..."
+# export FZF_DEFAULT_OPTS="--height=70% --layout=reverse --border"
+# export GLOGF_PREVIEW=0

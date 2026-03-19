@@ -1,0 +1,5 @@
+# Local machine/user overrides for Git.
+# Copy to ~/.gitconfig.local and customize as needed.
+
+# [core]
+# 	editor = nvim
