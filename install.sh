@@ -31,8 +31,8 @@ fi
 dotfiles_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$dotfiles_dir"
 
-packages=(zsh ghostty git)
-managed_paths=(.zshrc .zshenv .gitconfig .config/ghostty/config)
+packages=(zsh ghostty git starship)
+managed_paths=(.zshrc .zshenv .gitconfig .config/ghostty/config .config/starship.toml)
 timestamp="$(date +%Y%m%d%H%M%S)"
 
 backup_conflict() {
@@ -68,6 +68,25 @@ if [[ "$dry_run" -eq 1 ]]; then
 fi
 
 stow "${stow_args[@]}" "${packages[@]}"
+
+# Zsh plugins
+plugins_dir="$HOME/.zsh/plugins"
+declare -A zsh_plugins=(
+  [zsh-autocomplete]="https://github.com/marlonrichert/zsh-autocomplete.git"
+  [zsh-syntax-highlighting]="https://github.com/zsh-users/zsh-syntax-highlighting.git"
+)
+
+for name in "${!zsh_plugins[@]}"; do
+  if [[ -d "$plugins_dir/$name" ]]; then
+    continue
+  fi
+  if [[ "$dry_run" -eq 1 ]]; then
+    printf '[dry-run] Would clone %s\n' "$name"
+  else
+    git clone --depth 1 "${zsh_plugins[$name]}" "$plugins_dir/$name"
+    printf 'Cloned %s\n' "$name"
+  fi
+done
 
 example_dir="$dotfiles_dir/local"
 if [[ -f "$example_dir/.zshrc.local.example" && ! -f "$HOME/.zshrc.local" ]]; then
